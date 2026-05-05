@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать быстрый VPN для Telegram на ПК, Android и iPhone | TG VPN</title>
+    <meta name="description" content="Надежный и рабочий ВПН для Телеграм. Обход блокировок, высокая скорость загрузки видео и кружочков. Поддержка всех устройств за 179 рублей в месяц.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= BASE STYLES & VARIABLES ================= */
+        :root {
+            --bg-color: #0B0F19;
+            --surface-color: #151E2E;
+            --surface-hover: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --tg-blue: #2AABEE;
+            --tg-blue-hover: #228BC8;
+            --accent-orange: #F97316;
+            --accent-green: #10B981;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; }
+
+        /* ================= HEADER ================= */
+        header { padding: 20px 0; border-bottom: 1px solid var(--border-color); background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 8px; }
+        .logo-icon { color: var(--tg-blue); font-size: 28px; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: 0.3s; }
+        .nav-links a:hover { color: #fff; }
+
+        /* ================= HERO ================= */
+        .hero { padding: 80px 0; text-align: center; }
+        .hero-badge { display: inline-block; background: rgba(42, 171, 238, 0.1); color: var(--tg-blue); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(42, 171, 238, 0.2); }
+        .hero h1 { font-size: 46px; font-weight: 900; line-height: 1.2; margin-bottom: 24px; }
+        .hero p { font-size: 18px; color: var(--text-muted); max-width: 680px; margin: 0 auto 40px; }
+        .btn { display: inline-block; background: var(--tg-blue); color: #fff; padding: 16px 36px; border-radius: 12px; font-size: 16px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 20px rgba(42, 171, 238, 0.3); border: none; cursor: pointer; text-align: center; }
+        .btn:hover { background: var(--tg-blue-hover); transform: translateY(-2px); }
+
+        /* ================= POLL & FEATURES WIDGET ================= */
+        .poll-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .poll-box { background: var(--surface-color); padding: 30px; border-radius: 20px; border: 1px solid var(--border-color); }
+        .poll-box h3 { font-size: 20px; margin-bottom: 20px; }
+        .poll-option { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 14px 20px; border-radius: 12px; margin-bottom: 12px; cursor: pointer; position: relative; overflow: hidden; transition: 0.3s; display: flex; justify-content: space-between; }
+        .poll-option:hover { background: rgba(255,255,255,0.08); }
+        .poll-bar { position: absolute; left: 0; top: 0; height: 100%; background: rgba(42, 171, 238, 0.2); width: 0%; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; }
+        .poll-text { position: relative; z-index: 2; font-size: 15px; font-weight: 500; }
+        .poll-percent { position: relative; z-index: 2; font-weight: 700; opacity: 0; transition: opacity 0.5s; color: var(--tg-blue); }
+        .poll-option.voted .poll-percent { opacity: 1; }
+        .features-list .f-item { margin-bottom: 20px; display: flex; gap: 15px; }
+        .f-icon { font-size: 24px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; height: fit-content; }
+        .f-text h4 { font-size: 18px; margin-bottom: 4px; }
+        .f-text p { color: var(--text-muted); font-size: 14px; }
+
+        /* ================= SERVERS LIST ================= */
+        .servers-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .server-item { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .server-item:hover { border-color: rgba(42, 171, 238, 0.4); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        
+        .srv-left { display: flex; align-items: center; gap: 16px; }
+        .srv-flag { font-size: 28px; background: rgba(255,255,255,0.05); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+        .srv-info h4 { font-size: 18px; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        
+        .status-dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; position: relative; }
+        .status-dot::after { content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px; border-radius: 50%; background: rgba(16, 185, 129, 0.4); animation: pulse-green 2s infinite; }
+        @keyframes pulse-green { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+        
+        .srv-stats { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; }
+        .srv-stats span { display: flex; align-items: center; gap: 4px; }
+        
+        .srv-right { display: flex; align-items: center; gap: 20px; }
+        .srv-ping { font-weight: 700; color: var(--text-main); font-size: 15px; }
+        .srv-ping span { color: var(--accent-green); }
+        
+        .btn-check { background: rgba(42, 171, 238, 0.1); color: var(--tg-blue); border: 1px solid rgba(42, 171, 238, 0.2); padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: 0.3s; cursor: pointer; white-space: nowrap; }
+        .btn-check:hover { background: var(--tg-blue); color: #fff; }
+
+        /* ================= CALCULATOR ================= */
+        .calc-wrapper { background: var(--surface-color); max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center; }
+        .calc-wrapper h2 { margin-bottom: 30px; font-size: 28px; }
+        .slider-container { margin: 30px 0; position: relative; }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: var(--tg-blue); cursor: pointer; margin-top: -10px; box-shadow: 0 0 15px rgba(42, 171, 238, 0.6); transition: 0.2s; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: var(--border-color); border-radius: 4px; }
+        .slider-labels { display: flex; justify-content: space-between; margin-top: 15px; color: var(--text-muted); font-weight: 500; font-size: 14px; }
+        
+        .calc-results { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); padding: 20px 30px; border-radius: 16px; border: 1px solid var(--border-color); text-align: left; }
+        .c-block { display: flex; flex-direction: column; }
+        .c-label { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+        .c-val { font-size: 32px; font-weight: 900; color: #fff; }
+        .c-val span { font-size: 16px; font-weight: 500; color: var(--text-muted); }
+        .c-discount { color: var(--accent-green); font-weight: 700; font-size: 16px; background: rgba(16, 185, 129, 0.1); padding: 4px 12px; border-radius: 8px; }
+
+        /* ================= TARIFFS ================= */
+        .tariffs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; }
+        .tariff-card { background: var(--surface-color); border-radius: 20px; padding: 32px 24px; text-align: center; position: relative; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .t-icon { font-size: 40px; margin-bottom: 16px; }
+        .t-name { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+        .t-duration { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+        .t-price-box { margin-bottom: 20px; }
+        .t-old-price { font-size: 16px; color: var(--text-muted); text-decoration: line-through; display: block; margin-bottom: 4px; }
+        .t-new-price { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+        .t-new-price span { font-size: 16px; font-weight: 500; color: var(--text-muted); }
+        .t-total { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px; font-size: 13px; color: var(--text-main); margin-bottom: 24px; }
+        .t-total span { color: var(--accent-green); font-weight: 700; display: block; margin-top: 4px; }
+        .t-features { list-style: none; margin-bottom: 30px; text-align: left; flex-grow: 1; }
+        .t-features li { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 8px; }
+        .t-features li::before { content: '✓'; color: var(--tg-blue); font-weight: bold; }
+        
+        .btn-outline { background: transparent; border: 2px solid var(--border-color); color: #fff; box-shadow: none; }
+        .tariff-optimal { border-color: var(--tg-blue); box-shadow: 0 0 30px rgba(42, 171, 238, 0.15); transform: scale(1.03); }
+        .tariff-max { border-color: var(--accent-orange); }
+        .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.3); color: #fff;}
+
+        /* ================= REVIEWS & FAQ & SEO ================= */
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .review-card { background: var(--surface-color); padding: 24px; border-radius: 16px; border: 1px solid var(--border-color); }
+        .r-stars { color: #FBBF24; margin-bottom: 12px; font-size: 18px; }
+        .r-text { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; font-style: italic; }
+        .r-author { display: flex; align-items: center; gap: 12px; }
+        .r-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--tg-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .r-name { font-size: 14px; font-weight: 700; }
+        .r-date { font-size: 12px; color: var(--text-muted); }
+
+        .faq-wrapper { max-width: 800px; margin: 0 auto; }
+        details { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        summary { padding: 20px; font-size: 16px; font-weight: 600; cursor: pointer; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 20px; color: var(--tg-blue); transition: 0.3s; }
+        details[open] summary::after { content: '−'; }
+        details p { padding: 0 20px 20px; color: var(--text-muted); font-size: 15px; }
+
+        .seo-block { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 16px; border: 1px solid var(--border-color); margin-top: 40px; }
+        .seo-block h2 { font-size: 24px; margin-bottom: 16px; color: #fff; }
+        .seo-block h3 { font-size: 18px; margin-top: 24px; margin-bottom: 12px; color: #fff; }
+        .seo-block p { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.7; text-align: justify; }
+
+        footer { padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 14px; }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 992px) { 
+            .poll-features-grid, .tariffs-grid, .reviews-grid { grid-template-columns: 1fr; } 
+            .tariff-optimal { transform: none; } 
+            .calc-results { flex-direction: column; gap: 15px; text-align: center; } 
+        }
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .server-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .srv-right { width: 100%; justify-content: space-between; }
+            .btn-check { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo"><span class="logo-icon">➤</span> TG VPN</div>
+            <nav class="nav-links">
+                <a href="#about">О сервисе</a>
+                <a href="#servers">Серверы</a>
+                <a href="#tariffs">Тарифы</a>
+                <a href="#reviews">Отзывы</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Специально для мессенджеров</div>
+            <h1>VPN для Telegram:<br>связь без обрывов</h1>
+            <p>Забудьте о зависших кружочках и долгой загрузке медиа. Настроенный приватный канал обеспечит мгновенную скорость соединения.</p>
+            <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn">Подключить за 1 минуту</a>
+        </div>
+    </section>
+
+    <!-- ИНТЕРАКТИВНЫЙ ОПРОС -->
+    <section id="about" style="background: rgba(0,0,0,0.2);">
+        <div class="container poll-features-grid">
+            <div class="poll-box">
+                <h3>С какой проблемой вы столкнулись?</h3>
+                <div class="poll-option" data-percent="54%">
+                    <div class="poll-bar"></div>
+                    <span class="poll-text">Долго грузятся видео и файлы</span>
+                    <span class="poll-percent">54%</span>
+                </div>
+                <div class="poll-option" data-percent="28%">
+                    <div class="poll-bar"></div>
+                    <span class="poll-text">Бесплатный VPN постоянно отключается</span>
+                    <span class="poll-percent">28%</span>
+                </div>
+                <div class="poll-option" data-percent="18%">
+                    <div class="poll-bar"></div>
+                    <span class="poll-text">Не грузятся кружочки</span>
+                    <span class="poll-percent">18%</span>
+                </div>
+            </div>
+            
+            <div class="features-list">
+                <div class="f-item">
+                    <div class="f-icon">⚡</div>
+                    <div class="f-text">
+                        <h4>Скорость без ограничений</h4>
+                        <p>Наши серверы оптимизированы для передачи тяжелого медиаконтента без сжатия канала.</p>
+                    </div>
+                </div>
+                <div class="f-item">
+                    <div class="f-icon">🛡️</div>
+                    <div class="f-text">
+                        <h4>Защита от блокировок</h4>
+                        <p>Используем передовые протоколы маскировки трафика (VLESS, Shadowsocks).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СПИСОК СЕРВЕРОВ -->
+    <section id="servers" style="border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <h2 class="section-title">Доступные локации и скорость</h2>
+            
+            <div class="servers-list">
+                <!-- Сервер 1 -->
+                <div class="server-item">
+                    <div class="srv-left">
+                        <div class="srv-flag">🇳🇱</div>
+                        <div class="srv-info">
+                            <h4>Амстердам (NL) <span class="status-dot"></span></h4>
+                            <div class="srv-stats">
+                                <span>Протокол: VLESS</span><span>• Нагрузка: 24%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="srv-right">
+                        <div class="srv-ping">Пинг: <span>~15 мс</span></div>
+                        <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn-check">Проверить пинг</a>
+                    </div>
+                </div>
+                <!-- Сервер 2 -->
+                <div class="server-item">
+                    <div class="srv-left">
+                        <div class="srv-flag">🇩🇪</div>
+                        <div class="srv-info">
+                            <h4>Франкфурт (DE) <span class="status-dot"></span></h4>
+                            <div class="srv-stats">
+                                <span>Протокол: VLESS</span><span>• Нагрузка: 31%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="srv-right">
+                        <div class="srv-ping">Пинг: <span>~18 мс</span></div>
+                        <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn-check">Проверить пинг</a>
+                    </div>
+                </div>
+                <!-- Сервер 3 -->
+                <div class="server-item">
+                    <div class="srv-left">
+                        <div class="srv-flag">🇫🇮</div>
+                        <div class="srv-info">
+                            <h4>Хельсинки (FI) <span class="status-dot"></span></h4>
+                            <div class="srv-stats">
+                                <span>Протокол: VLESS</span><span>• Нагрузка: 15%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="srv-right">
+                        <div class="srv-ping">Пинг: <span>~22 мс</span></div>
+                        <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn-check">Проверить пинг</a>
+                    </div>
+                </div>
+                <!-- Сервер 4 -->
+                <div class="server-item">
+                    <div class="srv-left">
+                        <div class="srv-flag">🇬🇧</div>
+                        <div class="srv-info">
+                            <h4>Лондон (UK) <span class="status-dot"></span></h4>
+                            <div class="srv-stats">
+                                <span>Протокол: VLESS</span><span>• Нагрузка: 42%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="srv-right">
+                        <div class="srv-ping">Пинг: <span>~28 мс</span></div>
+                        <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn-check">Проверить пинг</a>
+                    </div>
+                </div>
+                <!-- Сервер 5 -->
+                <div class="server-item">
+                    <div class="srv-left">
+                        <div class="srv-flag">🇸🇪</div>
+                        <div class="srv-info">
+                            <h4>Стокгольм (SE) <span class="status-dot"></span></h4>
+                            <div class="srv-stats">
+                                <span>Протокол: VLESS</span><span>• Нагрузка: 19%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="srv-right">
+                        <div class="srv-ping">Пинг: <span>~20 мс</span></div>
+                        <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn-check">Проверить пинг</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="calculator" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <div class="calc-wrapper">
+                <h2>Рассчитайте вашу выгоду 🧮</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Чем дольше подписка, тем дешевле месяц использования.</p>
+                
+                <div class="slider-container">
+                    <input type="range" id="tariff-slider" min="1" max="3" step="1" value="2">
+                    <div class="slider-labels">
+                        <span>1 мес</span><span>3 мес</span><span>1 год</span>
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="c-block">
+                        <span class="c-label">Цена за месяц:</span>
+                        <div class="c-val" id="calc-month-price">260 ₽<span>/мес</span></div>
+                    </div>
+                    <div class="c-block">
+                        <span class="c-label">Итого к оплате:</span>
+                        <div class="c-val" id="calc-total-price">780 ₽</div>
+                    </div>
+                    <div class="c-discount" id="calc-discount">Выгода 25%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАРИФЫ -->
+    <section id="tariffs">
+        <div class="container">
+            <h2 class="section-title">Выберите тариф</h2>
+            <div class="tariffs-grid">
+                <!-- Старт -->
+                <div class="tariff-card">
+                    <div class="t-icon">📱</div>
+                    <div class="t-name">«Старт»</div>
+                    <div class="t-duration">1 месяц</div>
+                    <div class="t-price-box"><div class="t-new-price">349 ₽<span>/мес</span></div></div>
+                    <ul class="t-features">
+                        <li>Все платформы</li><li>Безлимитный трафик</li><li>Поддержка</li>
+                    </ul>
+                    <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn btn-outline" style="width:100%;">Начать</a>
+                </div>
+
+                <!-- Оптимальный -->
+                <div class="tariff-card tariff-optimal">
+                    <div class="badge" style="background: var(--tg-blue);">⭐ Популярный</div>
+                    <div class="t-icon">📲</div>
+                    <div class="t-name">«Оптимальный»</div>
+                    <div class="t-duration">3 месяца</div>
+                    <div class="t-price-box">
+                        <span class="t-old-price">349 ₽</span>
+                        <div class="t-new-price">260 ₽<span>/мес</span></div>
+                    </div>
+                    <div class="t-total">Итого: 780 ₽ за квартал<span>Скидка: −25%</span></div>
+                    <ul class="t-features">
+                        <li>Все платформы</li><li>Безлимитный трафик</li><li>Защита от DPI</li>
+                    </ul>
+                    <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn" style="width:100%;">Выбрать</a>
+                </div>
+
+                <!-- Максимум -->
+                <div class="tariff-card tariff-max">
+                    <div class="badge" style="background: var(--accent-orange);">🚀 Максимум</div>
+                    <div class="t-icon">🚀</div>
+                    <div class="t-name">«Максимум»</div>
+                    <div class="t-duration">1 год</div>
+                    <div class="t-price-box">
+                        <span class="t-old-price">349 ₽</span>
+                        <div class="t-new-price">175 ₽<span>/мес</span></div>
+                    </div>
+                    <div class="t-total">Итого: 2 100 ₽ за год<span>Скидка: −50%</span></div>
+                    <ul class="t-features">
+                        <li>Все платформы</li><li>Безлимит</li><li>Приоритетный пинг</li>
+                    </ul>
+                    <a href="https://tuvp1.ru/5Sg5nF?sub1=telegravpn" class="btn" style="background: linear-gradient(135deg, #F97316, #EF4444); width:100%;">Взять на год</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section id="reviews" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <h2 class="section-title">Отзывы пользователей</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="r-stars">★★★★★</div>
+                    <div class="r-text">«Долго искал рабочий сервис. Скачал ВПН для Телеграм на ПК — теперь видосы в каналах грузятся моментально, как раньше.»</div>
+                    <div class="r-author">
+                        <div class="r-avatar">М</div>
+                        <div><div class="r-name">Максим В.</div><div class="r-date">2 дня назад</div></div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="r-stars">★★★★★</div>
+                    <div class="r-text">«Тариф Максимум просто топ. Забыл, что такое обрывы звонков. Телеграм через ВПН работает идеально, без задержек.»</div>
+                    <div class="r-author">
+                        <div class="r-avatar" style="background: var(--accent-green);">А</div>
+                        <div><div class="r-name">Алексей</div><div class="r-date">Неделю назад</div></div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="r-stars">★★★★★</div>
+                    <div class="r-text">«Наконец-то нашла норм приложение. До этого бесплатные прокси постоянно отваливались. Настроила за минуту.»</div>
+                    <div class="r-author">
+                        <div class="r-avatar" style="background: var(--accent-orange);">E</div>
+                        <div><div class="r-name">Елена С.</div><div class="r-date">Месяц назад</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO ТЕКСТ & FAQ -->
+    <section id="seo">
+        <div class="container">
+            <h2 class="section-title">Вопросы и ответы</h2>
+            <div class="faq-wrapper">
+                <details>
+                    <summary>Будет ли Телеграм работать с ВПН лучше?</summary>
+                    <p>Да. Качественный платный VPN обеспечит прямой и быстрый канал к серверам мессенджера без ограничений провайдера.</p>
+                </details>
+                <details>
+                    <summary>На каких устройствах работает подписка?</summary>
+                    <p>Вы можете настроить ВПН для Телеграм на Айфон, Android-смартфонах и на ПК. Один аккаунт покрывает все ваши гаджеты.</p>
+                </details>
+            </div>
+
+            <div class="seo-block">
+                <h2>Зачем пользователю из России VPN для Telegram</h2>
+                <p>В последние годы Telegram сталкивается с блокировками на территории России. Несмотря на это, мессенджер продолжает оставаться одним из самых популярных инструментов для общения, и многие не готовы отказаться от его использования, даже когда доступ к нему ограничен. В таких условиях VPN становится незаменимым инструментом, позволяющим обойти блокировки и оставаться на связи.</p>
+                <p>Использование VPN для Telegram помогает не только получить доступ к заблокированным ресурсам, но и защитить свою личную информацию. VPN шифрует трафик, что снижает риск перехвата данных и помогает оставаться анонимным в интернете.</p>
+
+                <h3>Telegram ограничен на всей территории</h3>
+                <p>На протяжении последних лет Telegram регулярно сталкивается с блокировками на территории России. Причиной тому стали не только попытки ограничить доступ к мессенджеру для борьбы с экстремизмом и терроризмом, но и частые столкновения с властями, которые не могут получить доступ к зашифрованным данным.</p>
+                <p>Телеграм-каналы и группы, которые создаются для самых различных целей — от политики до информационных технологий, часто становятся объектами давления. В ответ на эти меры Telegram постоянно ищет пути обхода блокировок, но иногда доступ к мессенджеру все равно ограничен. VPN — это один из самых простых способов обойти блокировки и продолжать пользоваться сервисом без ограничений.</p>
+
+                <h3>Как обойти блокировки и выйти в дамки</h3>
+                <p>VPN работает как защищенный туннель, через который передаются все данные, скрывая реальное местоположение пользователя и замещая его на выбранное. Например, если в России доступ к Telegram заблокирован, с помощью VPN можно подключиться к серверу в другой стране, где мессенджер не ограничен. Это позволяет не только обойти блокировки, но и сделать доступ к Telegram стабильным.</p>
+                <p>Также важно понимать, что VPN шифрует все данные, что позволяет не только обходить блокировки, но и повышает уровень безопасности общения в Telegram. Использование VPN помогает избежать отслеживания действий в сети, например, от интернет-провайдеров, которые могут отслеживать трафик.</p>
+
+                <h3>Безопасные данные: шифр под контролем без возможности его распутать</h3>
+                <p>Одной из главных причин, почему Telegram стал таким популярным, является его высокий уровень безопасности. Сообщения в мессенджере шифруются, и только отправитель и получатель могут их расшифровать. Однако, несмотря на высокий уровень защиты, при использовании открытых сетей (например, общественный Wi-Fi) данные могут быть перехвачены.</p>
+                <p>VPN защищает ваш интернет-трафик, шифруя его перед отправкой, что делает его практически невозможным для перехвата. Даже если ваш трафик попадет в руки злоумышленников, расшифровать его будет невозможно. Таким образом, VPN усиливает защиту личных данных и делает общение в Telegram ещё более безопасным.</p>
+
+                <h3>Альтернативы: прокси</h3>
+                <p>Хотя VPN является наиболее эффективным инструментом для обхода блокировок, прокси-серверы также могут быть полезным методом. Прокси работает как промежуточный сервер, через который проходит весь трафик, скрывая ваше реальное местоположение и предоставляя возможность обходить ограничения. Однако прокси-серверы не обеспечивают такого уровня безопасности, как VPN, поскольку не шифруют трафик.</p>
+                <p>Прокси могут быть полезны, если вам нужен быстрый и легкий способ для обхода блокировок, но они не обеспечивают такой же защиты данных, как VPN. Если ваша цель — обеспечить безопасность и анонимность, лучше отдать предпочтение именно VPN.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 TG VPN. Сервис для безопасного и быстрого доступа.</p>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script>
+        // Логика Опроса (Poll)
+        const pollOptions = document.querySelectorAll('.poll-option');
+        let hasVoted = false;
+
+        pollOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                if (hasVoted) return;
+                hasVoted = true;
+                
+                pollOptions.forEach(opt => {
+                    opt.classList.add('voted');
+                    const targetWidth = opt.getAttribute('data-percent');
+                    opt.querySelector('.poll-bar').style.width = targetWidth;
+                });
+                
+                this.style.border = '1px solid var(--tg-blue)';
+                this.style.background = 'rgba(42, 171, 238, 0.1)';
+            });
+        });
+
+        // Логика Калькулятора (Calculator)
+        const slider = document.getElementById('tariff-slider');
+        const priceMonth = document.getElementById('calc-month-price');
+        const priceTotal = document.getElementById('calc-total-price');
+        const discountBox = document.getElementById('calc-discount');
+
+        const tariffData = {
+            1: { month: '349 ₽', total: '349 ₽', discount: 'Без скидки', dColor: 'var(--text-muted)', dBg: 'transparent' },
+            2: { month: '260 ₽', total: '780 ₽', discount: 'Выгода 25%', dColor: 'var(--accent-green)', dBg: 'rgba(16, 185, 129, 0.1)' },
+            3: { month: '175 ₽', total: '2 100 ₽', discount: 'Выгода 50%', dColor: 'var(--accent-orange)', dBg: 'rgba(249, 115, 22, 0.1)' }
+        };
+
+        slider.addEventListener('input', function() {
+            const val = this.value;
+            priceMonth.innerHTML = `${tariffData[val].month}<span>/мес</span>`;
+            priceTotal.textContent = tariffData[val].total;
+            discountBox.textContent = tariffData[val].discount;
+            discountBox.style.color = tariffData[val].dColor;
+            discountBox.style.background = tariffData[val].dBg;
+        });
+    </script>
+</body>
+</html>
